@@ -6,9 +6,9 @@
 
 {% block headerPicture %}
 {% if article.illustration %}
-                            <img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/header/{{ article.illustration }}"  />
+                            <img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/{{ HEADER_PICTURE_FOLDER }}/{{ article.illustration }}"  />
 {% else %}
-                            <img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/theme/img/cropped-branch-header1.jpg"  />
+                            <img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/{{ HEADER_PICTURE_FOLDER }}/{{ DEFAULT_ARTICLE_HEADER }}"  />
 {% endif %}
 {% endblock headerPicture %}
 

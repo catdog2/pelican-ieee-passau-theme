@@ -5,7 +5,7 @@
 {% endblock languageChoser %}
 
 {% block headerPicture %}
-<img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/theme/img/cropped-branch-header1.jpg"  />
+<img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/{{ HEADER_PICTURE_FOLDER }}/{{ HEADER_PICTURE }}"  />
 {% endblock headerPicture %}
 
 {% block content %}
@@ -22,9 +22,9 @@
 
                     <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">
                         {% if article.illustration %}
-                        <img width="847" height="222" src="{{ main_siteurl }}/header/{{ article.illustration }}" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
+                        <img width="847" height="222" src="{{ main_siteurl }}/{{ HEADER_PICTURE_FOLDER }}/{{ article.illustration }}" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
                         {% else %}
-                        <img width="847" height="222" src="{{ main_siteurl }}/theme/img/cropped-branch-header1.jpg" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
+                        <img width="847" height="222" src="{{ main_siteurl }}/{{ HEADER_PICTURE_FOLDER }}/{{ DEFAULT_ARTICLE_HEADER }}" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
                         {% endif %}
                         <h1 class="h2 post-title">{{ article.title }}</h1>
                     </a>
