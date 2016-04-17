@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block languageChoser %}
+<a class="lang-link" href="{{ main_siteurl }}/{{ SITEURL | getOtherLanguage }}/blog/{{ article.slug }}" title="View translated page"></a>
+{% endblock languageChoser %}
+
+{% block headerPicture %}
+{% if article.illustration %}
+                            <img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/header/{{ article.illustration }}"  />
+{% else %}
+                            <img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/theme/img/cropped-branch-header1.jpg"  />
+{% endif %}
+{% endblock headerPicture %}
+
+{% block content %}
+            <!-- begin article -->
+            <article class="clearfix post type-post format-standard has-post-thumbnail status-publish hentry" role="article" itemscope itemtype="https://schema.org/BlogPosting">
+                <!-- begin article header -->
+                <header class="article-header">
+                    <h1 class="entry-title single-title" itemprop="headline">{{ article.title }}</h1>
+                    <time class="updated article-date" datetime="{{ article.date.isoformat() }}" pubdate="pubdate">
+                        <span class="article-date-day">{{ article.date.day }}</span>
+                        <span class="article-date-month">{{ article.date.month | toMonthNum }}</span>
+                        <span class="article-date-year">{{ article.date.year }}</span>
+                    </time>
+                </header>
+                <!-- end article header -->
+
+                <!-- begin article content -->
+                <section class="entry-content clearfix" itemprop="articleBody">
+                    {{ article.content }}
+                </section>
+                <!-- end article content -->
+
+{% include 'article_footer.html' %}
+
+            </article>
+            <!-- end article -->
+{% endblock content %}

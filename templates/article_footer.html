@@ -1,0 +1,16 @@
+                <!-- begin article footer -->
+                <footer class="article-footer">
+                    <div class="categories first">
+                        <span class="categories-title"> Kategorie:</span>
+                        <span class="the-categories"><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a></span>
+                    </div>
+                    <div class="tags last">
+                        <span class="tags-title">Schlagworte:</span>
+                                        <span class="the-tags">
+                                        {% for tag in article.tags %}
+                                            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>,
+                                        {% endfor %}
+                                        </span>
+                    </div>
+                </footer>
+                <!-- end article footer -->

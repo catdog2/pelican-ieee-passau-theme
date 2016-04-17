@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html lang="{{ lang }}">
+
+<head>
+    <title>IEEE Student Branch Passau</title>
+    <meta charset="utf-8">
+
+    <!-- Google Chrome Frame for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- mobile meta (hooray!) -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) -->
+    <link rel="apple-touch-icon" href="{{ main_siteurl }}/theme/img/favicon/apple-icon-touch.png">
+    <link rel="icon" href="{{ main_siteurl }}/theme/img/favicon/favicon.png">
+    <!--[if IE]>
+    <link rel="shortcut icon" href="{{ main_siteurl }}/theme/img/favicon/favicon.ico">
+    <![endif]-->
+    <!-- or, set /favicon.ico for IE10 win -->
+    <meta name="msapplication-TileColor" content="#094164">
+    <meta name="msapplication-TileImage" content="{{ main_siteurl }}/theme/img/favicon/win8-tile-icon.png">
+
+    <!-- stylesheets and fonts -->
+    <link rel='stylesheet' id='open-sans-css'  href='https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+    <link rel='stylesheet' id='bones-stylesheet-css'  href='{{ main_siteurl }}/theme/css/style.css' type='text/css' media='all' />
+
+    <!-- provide correct languages for search engines -->
+    <link rel="alternate" hreflang="en-US" href="{{ main_siteurl }}/en/" />
+    <link rel="alternate" hreflang="de-DE" href="{{ main_siteurl }}/de/" />
+</head>
+
+<body>
+    <!-- begin header -->
+    <div id="container">
+        <header class="header" role="banner">
+            <div id="inner-header" class="wrap clearfix">
+                <div class="heading">
+                    {% block languageChoser %}
+                    {% endblock languageChoser %}
+                    <a href="{{ SITEURL }}" rel="nofollow">
+                        <span class="logo"></span>
+                        {% block headerPicture %}
+                        {% endblock headerPicture %}
+                        <h1 class="title">{{ SITENAME }}</h1>
+                    </a>
+                </div>
+
+                <nav role="navigation">
+                    <ul id="menu-hauptmenue" class="nav top-nav clearfix">
+                            <li class="{% if page_name == 'index' %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}">Home</a></li>
+                            {% if DISPLAY_PAGES_ON_MENU %}
+                            {% for p in pages %}
+                            <li class="{% if p == page %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                            <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ SITEURL }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                    </ul>
+                </nav>
+                <div id="menu-toggle" style="display: none;">Show Menu</div>
+            </div>
+        </header>
+    </div>
+    <!-- end header -->
+
+    <!-- begin content section -->
+    <div id="content">
+        <div id="inner-content" class="wrap clearfix">
+            <div id="main" class="ninecol first clearfix" role="main">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            {% include 'sidebar.html' %}
+        </div>
+    </div>
+    <!-- end content section -->
+
+    {% include 'footer.html' %}
+
+    {% block script %}
+
+    <!-- scripts (no more other content)-->
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script>
+        function validateForm(query)
+        {
+            return (query.length > 0);
+        }
+    </script>
+    {% endblock script %}
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block languageChoser %}
+<a class="lang-link" href="{{ main_siteurl }}/{{ SITEURL | getOtherLanguage }}" title="View translated page"></a>
+{% endblock languageChoser %}
+
+{% block headerPicture %}
+<img width="1140" height="300" class="header-image attachment-flatdesign_header_image wp-post-image" src="{{ main_siteurl }}/theme/img/cropped-branch-header1.jpg"  />
+{% endblock headerPicture %}
+
+{% block content %}
+
+{% for article in articles_page.object_list %}
+            <!-- begin overview pages -->
+            <article class="clearfix status-publish has-post-thumbnail hentry" role="article">
+                <header class="article-header">
+                    <time class="updated article-date" datetime="{{ article.date.isoformat() }}" pubdate="pubdate">
+                        <span class="article-date-day">{{ article.date.day }}</span>
+                        <span class="article-date-month">{{ article.date.month | toMonthNum }}</span>
+                        <span class="article-date-year">{{ article.date.year }}</span>
+                    </time>
+
+                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">
+                        {% if article.illustration %}
+                        <img width="847" height="222" src="{{ main_siteurl }}/header/{{ article.illustration }}" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
+                        {% else %}
+                        <img width="847" height="222" src="{{ main_siteurl }}/theme/img/cropped-branch-header1.jpg" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
+                        {% endif %}
+                        <h1 class="h2 post-title">{{ article.title }}</h1>
+                    </a>
+                </header>
+                <section class="entry-content clearfix">
+                    {{ article.summary }}
+                </section>
+
+                {% include 'article_footer.html' %}
+
+            </article>
+            {% endfor %}
+
+            <div class="paginator">
+                {% if articles_page.has_previous() %}
+                    {% if articles_page.previous_page_number() == 1 %}
+                    <a href="{{ SITEURL }}/{{ page_name }}.html"><<</a>
+                    {% else %}
+                    <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.previous_page_number() }}.html"><<</a>
+                    {% endif %}
+                {% endif %}
+                Page {{ articles_page.number }} / {{ articles_paginator.num_pages }}
+                {% if articles_page.has_next() %}
+                <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html">>></a>
+                {% endif %}
+            </div>
+            <!-- end overview pages -->
+{% endblock content %}
