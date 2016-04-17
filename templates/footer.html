@@ -5,9 +5,9 @@
                 <div id="text_icl-2" class="widget widget_text_icl">
                     <h4 class="widgettitle">Wir danken unseren Sponsoren</h4>
                     <div class="textwidget">
-                        <a href="/de/sponsoren/#cipsoft" title="CipSoft GmbH"><img src="{{ main_siteurl }}/theme/img/sponsors/cipsoft.png" style="max-width: 30%; margin-right:3%;margin-bottom:1%" /></a>
-                        <a href="/de/sponsoren/#iteratec" title="iteratec GmbH"><img src="{{ main_siteurl }}/theme/img/sponsors/logo_iteratec3.png" style="max-width: 30%; margin-right:3%;margin-bottom:1%" /></a>
-                        <a href="/de/sponsoren/#microepsilon" title="micro Epsilon"><img src="{{ main_siteurl }}/theme/img/sponsors/micro-epsilon1.png" style="max-width: 10%; margin-right:3%;" /></a>
+                        {% for sponsor in SPONSORS %}
+                        <a href="{{ SITEURL }}/{{ SPONSORS_PAGE }}"><img src="{{ main_siteurl }}/{{ SPONSORS_PICTURE_FOLDER }}/{{ sponsor }}" style="height: 50px; margin-right:3%;margin-bottom:1%" /></a>
+                        {% endfor %}
                     </div> <!-- end #textwidget -->
                 </div>
             </div> <!-- end #footer-widgets -->
@@ -15,8 +15,8 @@
             <div id="footer-links" class="threecol last">
                 <nav role="navigation">
                     <ul id="menu-footer-de" class="nav footer-nav clearfix">
-                        <li id="menu-item-135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135"><a href="//www.uni-passau.de/">Universität Passau</a></li>
-                        <li id="menu-item-136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-136"><a href="//www.uni-passau.de/impressum">Impressum</a></li>
+                        <li id="menu-item-135" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-135"><a href="{{ FOOTER_LINK_ORGANISATION }}">{{ FOOTER_ORGANISATION_NAME }}</a></li>
+                        <li id="menu-item-136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-136"><a href="{{ FOOTER_LINK_IMPRINT }}">Impressum</a></li>
                     </ul>
                 </nav>
             </div> <!-- end #footer-links -->
