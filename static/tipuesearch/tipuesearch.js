@@ -35,40 +35,6 @@ http://www.tipue.com/search
                $.ajaxSetup({
                     async: false
                });
-
-               if (set.mode == 'live')
-               {
-                    for (var i = 0; i < tipuesearch_pages.length; i++)
-                    {
-                         $.get(tipuesearch_pages[i], '',
-                              function (html)
-                              {
-                                   var cont = $(set.liveContent, html).text();
-                                   cont = cont.replace(/\s+/g, ' ');
-                                   var desc = $(set.liveDescription, html).text();
-                                   desc = desc.replace(/\s+/g, ' ');
-                                                                      
-                                   var t_1 = html.toLowerCase().indexOf('<title>');
-                                   var t_2 = html.toLowerCase().indexOf('</title>', t_1 + 7);
-                                   if (t_1 != -1 && t_2 != -1)
-                                   {
-                                        var tit = html.slice(t_1 + 7, t_2);
-                                   }
-                                   else
-                                   {
-                                        var tit = 'No title';
-                                   }
-
-                                   tipuesearch_in.pages.push({
-                                        "title": tit,
-                                        "text": desc,
-                                        "tags": cont,
-                                        "loc": tipuesearch_pages[i] 
-                                   });    
-                              }
-                         );
-                    }
-               }
                
                if (set.mode == 'json')
                {
@@ -79,11 +45,6 @@ http://www.tipue.com/search
                          }
                     );
                }
-
-               if (set.mode == 'static')
-               {
-                    tipuesearch_in = $.extend({}, tipuesearch);
-               }                              
                
                var tipue_search_w = '';
                if (set.newWindow)
@@ -214,10 +175,10 @@ http://www.tipue.com/search
                               }
                               if (score < 1000000000)
                               {
-                                   found[c++] = score + '^' + tipuesearch_in.pages[i].title + '^' + s_t + '^' + tipuesearch_in.pages[i].loc;                                                                   
+                                   found[c++] = score + '^' + tipuesearch_in.pages[i].title + '^' + tipuesearch_in.pages[i].summary + '^' + tipuesearch_in.pages[i].url + '^' + tipuesearch_in.pages[i].illustration + "^" + tipuesearch_in.pages[i].tags;
                               }
                          }                         
-                         
+
                          if (c != 0)
                          {
                               if (show_replace == 1)
@@ -235,40 +196,19 @@ http://www.tipue.com/search
                                    out += '<div id="tipue_search_results_count">' + c_c + ' results</div>';
                               }
                               
-                              found.sort();
+                              found.sort(function(a,b){return a < b});
                               var l_o = 0;
                               for (var i = 0; i < found.length; i++)
                               {
-                                   var fo = found[i].split('^');
+                                   var entry = found[i].split('^');
+
                                    if (l_o >= start && l_o < set.show + start)
                                    {
-                                        out += '<div class="tipue_search_content_title"><a href="' + fo[3] + '"' + tipue_search_w + '>' +  fo[1] + '</a></div>';
-                                                                                
-                                        var t = fo[2];
-                                        var t_d = '';
-                                        var t_w = t.split(' ');
-                                        if (t_w.length < set.descriptiveWords)
-                                        {
-                                             t_d = t;
-                                        }
-                                        else
-                                        {
-                                             for (var f = 0; f < set.descriptiveWords; f++)
-                                             {
-                                                  t_d += t_w[f] + ' '; 	
-                                             }
-                                        }
-                                        t_d = $.trim(t_d);
-                                        if (t_d.charAt(t_d.length - 1) != '.')
-                                        {
-                                             t_d += ' ...';
-                                        }
-                                        out += '<div class="tipue_search_content_text">' + t_d + '</div>';
-                                        
-                                        if (set.showURL)
-                                        {  
-                                             out += '<div class="tipue_search_content_loc"><a href="' + fo[3] + '"' + tipue_search_w + '>' + fo[3] + '</a></div>';
-                                        }
+                                        out += '<article class="clearfix status-publish has-post-thumbnail hentry" role="article"><header class="article-header">';
+                                        out += '<a href="' + entry[3] + '"' + tipue_search_w + 'rel="bookmark"><img width="847" height="222" src="' + entry[4] + '" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" /><h1 class="h2 post-title">' +  entry[1] + '</h1></a></header>';
+
+                                        out += '<section class="entry-content clearfix">' + entry[2] + '</section></article>';
+
                                    }
                                    l_o++;     
                               }

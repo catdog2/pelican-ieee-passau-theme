@@ -57,7 +57,7 @@
                             <li class="{% if p == page %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
                             {% endfor %}
                             {% endif %}
-                            <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ SITEURL }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ main_siteurl }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                     </ul>
                 </nav>
                 <div id="menu-toggle" style="display: none;">Show Menu</div>
@@ -84,7 +84,6 @@
 
     <!-- scripts (no more other content)-->
     <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script>
         function validateForm(query)
         {
