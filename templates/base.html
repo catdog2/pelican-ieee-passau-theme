@@ -51,13 +51,23 @@
 
                 <nav role="navigation">
                     <ul id="menu-hauptmenue" class="nav top-nav clearfix">
-                            <li class="{% if page_name == 'index' %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}">Home</a></li>
-                            {% if DISPLAY_PAGES_ON_MENU %}
-                            {% for p in pages %}
-                            <li class="{% if p == page %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                        <li class="{% if page_name == 'index' %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}">Home</a></li>
+                        {% set handledPages = [] %}
+                        {% for p in pages %}
+                        {% if not p in handledPages %}
+                        <li class="{% if p == page %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                            <ul class="sub-menu">
+                            {% for sub in pages %}
+                                {% if sub.category == p.category and sub != p %}
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}/{{ sub.url }}">{{ sub.title }}</a></li>
+                                {% do handledPages.append(sub) %}
+                                {% endif %}
                             {% endfor %}
-                            {% endif %}
-                            <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ main_siteurl }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ main_siteurl }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                     </ul>
                 </nav>
                 <div id="menu-toggle" style="display: none;">Show Menu</div>
