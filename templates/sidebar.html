@@ -4,23 +4,13 @@
 
                 <!-- TODO add events -->
                 <div id="em_widget-2" class="widget widget_em_widget">
-                    <ul>
-                        <li><h3><a href="https://ieee.uni-passau.de/de/event/stammtisch-ss16-1/" title="1. Stammtisch">1. Stammtisch</a></h3>
-                            <span class="date dashicons dashicons-calendar"> 18.04.2016, 18:00</span>
-                            <span class="location dashicons dashicons-location"> FIM, Raum 242</span></li>
-                        <li><h3><a href="https://ieee.uni-passau.de/de/event/git-advanced/" title="Git - Advanced">Git - Advanced</a></h3>
-                            <span class="date dashicons dashicons-calendar"> 25.04.2016, 18:00</span>
-                            <span class="location dashicons dashicons-location"> FIM, Raum 242</span></li>
-                        <li><h3><a href="https://ieee.uni-passau.de/de/event/stammtisch-ss16-2/" title="Stammtisch">Stammtisch</a></h3>
-                            <span class="date dashicons dashicons-calendar"> 02.05.2016, 18:00</span>
-                            <span class="location dashicons dashicons-location"> FIM, Raum 242</span></li>
-                        <li><h3><a href="https://ieee.uni-passau.de/de/event/stammtisch-ss16-3/" title="Stammtisch">Stammtisch</a></h3>
-                            <span class="date dashicons dashicons-calendar"> 23.05.2016, 18:00</span>
-                            <span class="location dashicons dashicons-location"> FIM, Raum 242</span></li>
-                        <li><h3><a href="https://ieee.uni-passau.de/de/event/stammtisch-ss16-5/" title="Stammtisch">Stammtisch</a></h3>
-                            <span class="date dashicons dashicons-calendar"> 06.06.2016, 00:00</span>
-                            <span class="location dashicons dashicons-location"> FIM, Raum 242</span></li>
-                    </ul>
+                  <ul>{% for evstart, evend, event in events_list[DEFAULT_LANG] %}
+                      <li><h3><a href="{{ SITEURL }}/blog/{{ event.slug }}" title="{{ event['title'] }}">{{ event['title'] }}</a></h3>
+                      <span class="date dashicons dashicons-calendar"> {{ evstart }}</span>
+                      <span class="location dashicons dashicons-location">  {{ event.location }}</span>
+                      </li>
+                      {% endfor %}
+                  </ul>
                 </div>
 
                 <!-- TODO add newsletter subscription -->
