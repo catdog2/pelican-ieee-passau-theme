@@ -2,7 +2,7 @@
             <!-- begin sidebar -->
             <div id="sidebar1" class="sidebar threecol last clearfix" role="complementary">
 
-                <!-- TODO add events -->
+                <!-- events -->
                 <div id="em_widget-2" class="widget widget_em_widget">
                   <ul>{% for evstart, evend, event in events_list[DEFAULT_LANG] %}
                       <li><h3><a href="{{ SITEURL }}/blog/{{ event.slug }}" title="{{ event['title'] }}">{{ event['title'] }}</a></h3>
@@ -13,10 +13,25 @@
                   </ul>
                 </div>
 
-                <!-- TODO add newsletter subscription -->
+                <!-- newsletter subscription -->
                 <div id="mailman_subscribe-2" class="widget Mailman_Subscribe">
                     <h4 class="widgettitle">Newsletter-Anmeldung</h4>
-                    <form class="mailman_subscribe_widget" action="/de/" id="mailman_subscribe_form-2" method="post">
+                    <?php
+                        if (isset($_REQUEST['mailman_subscribe_email'])
+                            && filter_var($_REQUEST['mailman_subscribe_email'], FILTER_VALIDATE_EMAIL)) {
+                            $to      = '{{ MAILINGLIST }}';
+                            $subject = 'subscribe';
+                            $message = '';
+                            $headers = 'From: ' . $_REQUEST['mailman_subscribe_email'];
+
+                            if (mail($to, $subject, $message, $headers)) {
+                                echo 'Thank you for subscribing to our mailing list!'
+                            } else {
+                                echo 'There was a problem processing your submission. Please try again.'
+                            }
+                        }
+                    ?>
+                    <form class="mailman_subscribe_widget" action="{{ SITEURL }}" id="mailman_subscribe_form" method="post">
                         <input type="text" name="mailman_subscribe_email" placeholder="E-Mail..." />
                         <input type="submit" name="absenden" value="absenden" />
                     </form>
