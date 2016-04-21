@@ -2483,6 +2483,10 @@ of the styles inside media queries.
     padding:1% 0
 }
 
+.widget_flatdesign_social-media-widget img {
+    width: 100%;
+    max-width: 175px;
+}
 
 /* Basic styling for login widget
    This styling aligns the gravtar left, the links right.*/
