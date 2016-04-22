@@ -613,11 +613,6 @@ dd {
 }
 
 /* line 535, ../scss/_normalize.scss */
-.sidebar ul,
-.sidebar ol,
-.commentlist {
-  list-style: none;
-}
 
 /******************************************************************
 Site Name:
@@ -663,22 +658,12 @@ TOOLS
 }
 
 /* line 41, ../scss/_mixins.scss */
-.image-replacement {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 
 /*
 use the best ampersand
 http://simplebits.com/notebook/2008/08/14/ampersands-2/
 */
 /* line 144, ../scss/_mixins.scss */
-span.amp {
-  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
-  font-style: italic;
-}
 
 /* line 150, ../scss/_mixins.scss */
 .text-left {
@@ -696,35 +681,14 @@ span.amp {
 }
 
 /* line 156, ../scss/_mixins.scss */
-.alert-help, .alert-info, .alert-error, .alert-success {
-  margin: 10px;
-  padding: 5px 18px;
-  border: 1px solid;
-}
 
 /* line 162, ../scss/_mixins.scss */
-.alert-help {
-  border-color: #e8dc59;
-  background: #ebe16f;
-}
 
 /* line 168, ../scss/_mixins.scss */
-.alert-info {
-  border-color: #bfe4f4;
-  background: #d5edf8;
-}
 
 /* line 174, ../scss/_mixins.scss */
-.alert-error {
-  border-color: #f8cdce;
-  background: #fbe3e4;
-}
 
 /* line 180, ../scss/_mixins.scss */
-.alert-success {
-  border-color: #deeaae;
-  background: #e6efc2;
-}
 
 /*********************
 BUTTONS
@@ -777,36 +741,8 @@ BUTTONS
 }
 
 /* line 327, ../scss/_mixins.scss */
-.blue-button, .blue-button:visited {
-  border-color: #1472ad;
-  text-shadow: 0 1px 1px #1472ad;
-  background: #1681c4;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1990db), to(#1681c4));
-  background: -webkit-linear-gradient(top, #1990db, #1681c4);
-  background: -moz-linear-gradient(top, #1990db, #1681c4);
-  background: -o-linear-gradient(top, #1990db, #1681c4);
-  background: linear-gradient(to bottom, #1990db, #1681c4);
-  box-shadow: inset 0 0 3px #59b3ec;
-}
 /* line 333, ../scss/_mixins.scss */
-.blue-button:hover, .blue-button:focus, .blue-button:visited:hover, .blue-button:visited:focus {
-  border-color: #116396;
-  background: #1472ad;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1784c9), to(#1472ad));
-  background: -webkit-linear-gradient(top, #1784c9, #1472ad);
-  background: -moz-linear-gradient(top, #1784c9, #1472ad);
-  background: -o-linear-gradient(top, #1784c9, #1472ad);
-  background: linear-gradient(to bottom, #1784c9, #1472ad);
-}
 /* line 337, ../scss/_mixins.scss */
-.blue-button:active, .blue-button:visited:active {
-  background: #1990db;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1681c4), to(#1990db));
-  background: -webkit-linear-gradient(top, #1681c4, #1990db);
-  background: -moz-linear-gradient(top, #1681c4, #1990db);
-  background: -o-linear-gradient(top, #1681c4, #1990db);
-  background: linear-gradient(to bottom, #1681c4, #1990db);
-}
 
 /*********************
 CUSTOM
@@ -1092,10 +1028,6 @@ and more scalable.
   background: url(../img/search.png) 0 50% no-repeat;
 }
 /* line 289, ../scss/_base.scss */
-.nav li ul.sub-menu,
-.nav li ul.children {
-  /* highlight current page */
-}
 /* line 293, ../scss/_base.scss */
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
@@ -1255,9 +1187,6 @@ POSTS & CONTENT STYLES
   padding-right: 15px;
 }
 /* line 475, ../scss/_base.scss */
-#content .byline {
-  color: #999;
-}
 /* line 482, ../scss/_base.scss */
 #content .entry-content {
   /*
@@ -1326,12 +1255,6 @@ POSTS & CONTENT STYLES
   padding: 10px;
 }
 /* line 567, ../scss/_base.scss */
-#content .wp-caption {
-  max-width: 100%;
-  background: #eee;
-  padding: 5px;
-  /* images inside wp-caption */
-}
 /* line 573, ../scss/_base.scss */
 #content .wp-caption img {
   max-width: 100%;
@@ -1339,32 +1262,13 @@ POSTS & CONTENT STYLES
   width: 100%;
 }
 /* line 579, ../scss/_base.scss */
-#content .wp-caption p.wp-caption-text {
-  font-size: 0.85em;
-  margin: 4px 0 7px;
-  text-align: center;
-}
 
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
 /* line 617, ../scss/_base.scss */
-.page-navigation,
-.wp-prev-next {
-  margin: 1.1em 0 2.2em;
-}
 
 /* line 620, ../scss/_base.scss */
-.bones_page_navi {
-  /* current page link */
-  /* end .bones_page_navi .bpn-current */
-  /* common styles for page-navi links */
-  /* remove the bg on end links */
-  /* previous link */
-  /* next page link */
-  /* first page link */
-  /* last page link */
-}
 /* line 622, ../scss/_base.scss */
 .bones_page_navi li {
   float: left;
@@ -1383,20 +1287,11 @@ PAGE NAVI STYLES
   text-decoration: underline;
 }
 /* line 642, ../scss/_base.scss */
-.bones_page_navi li.bpn-current {
-  padding: 3px 6px;
-  border-bottom: 2px solid #f01d4f;
-  position: relative;
-}
 /* line 647, ../scss/_base.scss */
 .bones_page_navi li.bpn-current a {
   /* hovering on current page link */
 }
 /* line 658, ../scss/_base.scss */
-.bones_page_navi li.bpn-prev-link,
-.bones_page_navi li.bpn-next-link {
-  font-weight: 700;
-}
 /* line 661, ../scss/_base.scss */
 .bones_page_navi li.bpn-prev-link a,
 .bones_page_navi li.bpn-next-link a {
@@ -1413,13 +1308,7 @@ PAGE NAVI STYLES
 /* end .bones_page_navi */
 /* fallback previous & next links */
 /* line 713, ../scss/_base.scss */
-.wp-prev-next .prev-link {
-  float: left;
-}
 /* line 717, ../scss/_base.scss */
-.wp-prev-next .next-link {
-  float: right;
-}
 
 /* end .wp-prev-next */
 /******************************************************************
@@ -1432,16 +1321,6 @@ COMMENT STYLES
 }
 
 /* line 745, ../scss/_base.scss */
-.commentlist {
-  /* general comment classes */
-  /* vcard */
-  /* end .commentlist .vcard */
-  /* comment meta */
-  /* comment content */
-  /* end .commentlist .comment_content */
-  /* comment reply link */
-  /* end .commentlist .comment-reply-link */
-}
 /* line 747, ../scss/_base.scss */
 .commentlist li {
   position: relative;
@@ -1457,20 +1336,8 @@ COMMENT STYLES
   margin-bottom: 0;
 }
 /* line 759, ../scss/_base.scss */
-.commentlist li ul.children {
-  margin: 0;
-  /* variations */
-  /* change number for different depth */
-}
 /* line 777, ../scss/_base.scss */
-.commentlist li[class*=depth-] {
-  margin-top: 1.1em;
-}
 /* line 781, ../scss/_base.scss */
-.commentlist li.depth-1 {
-  margin-left: 0;
-  margin-top: 0;
-}
 /* line 786, ../scss/_base.scss */
 .commentlist li:not(.depth-1) {
   margin-right: -10px;
@@ -1479,9 +1346,6 @@ COMMENT STYLES
   padding-bottom: 0;
 }
 /* line 800, ../scss/_base.scss */
-.commentlist .odd {
-  background: #eee;
-}
 /* line 803, ../scss/_base.scss */
 .commentlist .even {
   background: #fefefe;
@@ -1517,9 +1381,6 @@ COMMENT STYLES
   background: #fff;
 }
 /* line 871, ../scss/_base.scss */
-.commentlist .comment_content {
-  margin-left: 50px;
-}
 /* line 874, ../scss/_base.scss */
 .commentlist .comment_content p {
   margin: 0.7335em 0 1.5em;
@@ -1527,31 +1388,13 @@ COMMENT STYLES
   line-height: 1.5em;
 }
 /* line 883, ../scss/_base.scss */
-.commentlist .comment-reply-link {
-  text-decoration: none;
-  float: right;
-  background: #4598bb;
-  padding: 3px 5px;
-  color: #fff;
-  opacity: 0.65;
-  margin-bottom: 10px;
-  font-weight: 700;
-  font-size: 0.9em;
-}
 /* line 895, ../scss/_base.scss */
-.commentlist .comment-reply-link:hover, .commentlist .comment-reply-link:focus {
-  opacity: 1;
-}
 
 /* end .commentlist */
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
 /* line 907, ../scss/_base.scss */
-.respond-form {
-  margin: 1.5em 10px;
-  padding-bottom: 2.2em;
-}
 /* line 911, ../scss/_base.scss */
 .respond-form form {
   margin: 0.75em 0;
@@ -1615,23 +1458,14 @@ COMMENT FORM STYLES
 /* comment submit button */
 /* comment form title */
 /* line 970, ../scss/_base.scss */
-#comment-form-title {
-  margin: 0 0 1.1em;
-}
 
 /* cancel comment reply link */
 /* logged in comments */
 /* allowed tags */
 /* line 983, ../scss/_base.scss */
-#allowed_tags {
-  margin: 1.5em 10px 0.7335em 0;
-}
 
 /* no comments */
 /* line 988, ../scss/_base.scss */
-.nocomments {
-  margin: 0 20px 1.1em;
-}
 
 /*********************
 SIDEBARS & ASIDES
@@ -2490,9 +2324,6 @@ of the styles inside media queries.
 
 /* Basic styling for login widget
    This styling aligns the gravtar left, the links right.*/
-.widget_wp_sidebarlogin .avatar_container, #sidebar-login .avatar_container {
-  float:left;
-}
 .widget_wp_sidebarlogin ul {
   list-style: none outside !important;
 }
@@ -2511,17 +2342,7 @@ of the styles inside media queries.
   border-top: 1px solid #999;
   height: 1px;
 }
-.widget_wp_sidebarlogin ul.sidebar_login_links {
-  margin-left: 0 !important;
-}
-.widget_wp_sidebarlogin .sidebar_login_error {
-  color: #ae121e;
-  background-color: #fbb1b7;
-  border: 1px solid;
-  margin: 1em 0;
-  padding: 1em;
-  font-size: 13px;
-}
+
 .widget_wp_sidebarlogin .login_error a {
   color: #ae121e;
 }
