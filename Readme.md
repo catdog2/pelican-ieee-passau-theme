@@ -13,16 +13,23 @@ Necessary plugins are:
 * ```tipuesearch``` (javascript-based search)
 * ```sitemap```
 * ```photos``` (gallery plugin)
+* ```assets``` (minify css+js)
 
 In order to make these plugins work please ```pip install```:
 * ```beautifulsoup4```
 * ```icalendar```
 * ```pillow```
+* ```webassets```
+* ```cssmin```
 
-Additionally you have to enable the jinja2 do statements and add some functions to your pelican config files in order to make the theme work properly:
+Additionally you have to enable the jinja2 do statements and assets add some functions to your pelican config files in order to make the theme work properly:
 
 ```Python
-JINJA_EXTENSIONS = ['jinja2.ext.do']
+JINJA_EXTENSIONS = ['jinja2.ext.do', 'webassets.ext.jinja2.AssetsExtions']
+
+# path for css files (default values of assets plugin does not work with multilanguage
+# so we just specify the css folder of this theme
+ASSET_SOURCE_PATHS = ['static/css']
 
 def getOtherLanguage(path):
     if path.endswith("en"):
