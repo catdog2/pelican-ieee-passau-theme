@@ -1,15 +1,81 @@
-This is the pelican template for the website of the IEEE Student Branch Passau (ieee.uni-passau.de).
+## IEEE Passau Flatdesign Template
+This is a [Pelican](http://getpelican.org) template. Initially this design was created for Wordpress and can be found [here](https://github.com/maxklenk/flatdesign-child-ieee).
 
+It features multi-language usage, a calendar, filled by events, fully searchable content (javascript-based), a mailman-newsletter signup form, submenus for static pages and diverse small additions that were necessary for us.
+
+![alt tag](https://raw.githubusercontent.com/stieglma/pelican-ieee-passau-theme/master/ieee_passau_design.png)
+
+### Setup
+This theme uses several plugins, disabling them may work but was up to now not tested.
 Necessary plugins are: 
-* events
-* i18n_subsites
-* tipuesearch
-* sitemap
-* photos
+* ```events``` (creates the calendar, *.ics files)
+* ```i18n_subsites``` (multi-language plugin)
+* ```tipuesearch``` (javascript-based search)
+* ```sitemap```
+* ```photos``` (gallery plugin)
 
-Setting up pelican is easy and should be done in a virtualenv environment (c.f docs.getpelican.com/en/3.6.3/install.html).
+In order to make these plugins work please ```pip install```:
+* ```beautifulsoup4```
+* ```icalendar```
+* ```pillow```
 
-After setting the environment up you need to install additional python packages in order to make some of the plugins work:
-* beautifulsoup4
-* icalendar
-* pillow
+Additionally you have to enable the jinja2 do statements and add some functions to your pelican config files in order to make the theme work properly:
+
+```Python
+JINJA_EXTENSIONS = ['jinja2.ext.do']
+
+def getOtherLanguage(path):
+    if path.endswith("en"):
+        return u'de'
+    else:
+        return u'en'
+
+def toMonthNum(num):
+    months = { 1 : 'Jan',
+               2 : 'Feb',
+               3 : 'Mar',
+               4 : 'Apr',
+               5 : 'May',
+               6 : 'Jun',
+               7 : 'Jul',
+               8 : 'Aug',
+               9 : 'Sep',
+              10 : 'Oct',
+              11 : 'Nov',
+              12 : 'Dec'
+             }
+    return months[num]
+
+JINJA_FILTERS = {
+        'getOtherLanguage': getOtherLanguage,
+        'toMonthNum': toMonthNum,
+        }
+```
+
+### Customization
+We provide several variables that can be used to customize the theme:
+
+```Python
+# setting the mail address of the newsletter
+MAILMAN = 'announce@ieee.students.uni-passau.de'
+
+# where should the sponsors widget occur on the index (blog) page
+SPONSOR_WIDGET_PLACE = 2
+
+# header picture settings
+HEADER_PICTURE = 'header/branch_header.jpg'
+DEFAULT_ARTICLE_HEADER = 'header/branch_header.jpg'
+DEFAULT_PAGE_HEADER = 'header/branch_header.jpg'
+
+# sponsors settings
+SPONSORS_PICTURE_FOLDER = 'sponsors'
+SPONSORS = ['a.png', 'b.png', 'c.png']
+SPONSORS_PAGE = 'pages/sponsors'
+
+# footer links
+FOOTER_LINK_IMPRINT = '//imprint'
+FOOTER_LINK_ORGANISATION = '//organisation'
+FOOTER_ORGANISATION_NAME = 'Name'
+```
+
+For a working configuration you can look [here](https://github.com/stieglma/pelican-ieee-passau/blob/master/pelicanconf.py).
