@@ -29,6 +29,14 @@
                 <!-- begin article content -->
                 <section class="entry-content clearfix" itemprop="articleBody">
                     {{ article.content }}
+                    {% for galleryName, gallery in article.photo_gallery %}
+                    {{ galleryName }}
+                    <div class="gallery">
+                        {% for name, photo, thumb, exif, caption in gallery %}
+                        <a href="{{ main_siteurl }}/{{ photo }}" title="{{ name }}" exif="{{ exif }}" caption="{{ caption }}"><img src="{{ main_siteurl }}/{{ thumb }}"></a>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
                 </section>
                 <!-- end article content -->
 
