@@ -53,7 +53,7 @@
 
                 <nav role="navigation">
                     <ul id="menu-hauptmenue" class="nav top-nav clearfix">
-                        <li class="{% if page_name == 'index' %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}">Home</a></li>
+                        <li class="{% if page_name == 'index' %}current-menu-item {% endif %}menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ SITEURL }}">{% trans %}trans_home{% endtrans %}</a></li>
                         {% set handledPages = [] %}
                         {% for p in pages %}
                         {% if not p in handledPages %}
@@ -69,10 +69,10 @@
                         </li>
                         {% endif %}
                         {% endfor %}
-                        <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ main_siteurl }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ main_siteurl }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="{% trans %}trans_search{% endtrans %}" name="q" id="tipue_search_input"></form></li>
                     </ul>
                 </nav>
-                <div id="menu-toggle" style="display: none;">Show Menu</div>
+                <div id="menu-toggle" style="display: none;">{% trans %}trans_show_menu{% endtrans %}</div>
             </div>
         </header>
     <!-- end header -->

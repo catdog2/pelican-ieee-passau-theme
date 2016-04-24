@@ -15,7 +15,7 @@
 
                 <!-- newsletter subscription -->
                 <div id="mailman_subscribe-2" class="widget Mailman_Subscribe">
-                    <h4 class="widgettitle">Newsletter-Anmeldung</h4>
+                    <h4 class="widgettitle">{% trans %}trans_newsletter_signup{% endtrans %}</h4>
                     <?php
                         if (isset($_REQUEST['mailman_subscribe_email'])
                             && filter_var($_REQUEST['mailman_subscribe_email'], FILTER_VALIDATE_EMAIL)) {
@@ -25,14 +25,14 @@
                             $headers = 'From: ' . $_REQUEST['mailman_subscribe_email'];
 
                             if (mail($to, $subject, $message, $headers)) {
-                                echo 'Thank you for subscribing to our mailing list!'
+                                echo '{% trans %}trans_newsletter_success{% endtrans %}'
                             } else {
-                                echo 'There was a problem processing your submission. Please try again.'
+                                echo '{% trans %}trans_newsletter_problem{% endtrans %}'
                             }
                         }
                     ?>
                     <form class="mailman_subscribe_widget" action="{{ SITEURL }}" id="mailman_subscribe_form" method="post">
-                        <input type="text" name="mailman_subscribe_email" placeholder="E-Mail..." />
+                        <input type="text" name="mailman_subscribe_email" placeholder="{% trans %} trans_newsletter_mail_placeholder {% endtrans %}" />
                         <input type="submit" name="absenden" value="absenden" />
                     </form>
                 </div>

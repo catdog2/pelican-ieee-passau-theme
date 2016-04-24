@@ -22,10 +22,10 @@ In order to make these plugins work please ```pip install```:
 * ```webassets```
 * ```cssmin```
 
-Additionally you have to enable the jinja2 do statements and assets add some functions to your pelican config files in order to make the theme work properly:
+Additionally you have to enable the jinja2 do statements, assets, multilanguage and add some functions to your pelican config files in order to make the theme work properly:
 
 ```Python
-JINJA_EXTENSIONS = ['jinja2.ext.do', 'webassets.ext.jinja2.AssetsExtions']
+JINJA_EXTENSIONS = ['jinja2.ext.do', 'webassets.ext.jinja2.AssetsExtions', 'jinja2.ext.i18n']
 
 # path for css files (default values of assets plugin does not work with multilanguage
 # so we just specify the css folder of this theme
