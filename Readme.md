@@ -64,7 +64,7 @@ We provide several variables that can be used to customize the theme:
 
 ```Python
 # setting the mail address of the newsletter
-MAILMAN = 'announce@ieee.students.uni-passau.de'
+MAILINGLIST = 'announce@ieee.students.uni-passau.de'
 
 # where should the sponsors widget occur on the index (blog) page
 SPONSOR_WIDGET_PLACE = 2
