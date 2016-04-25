@@ -2,6 +2,7 @@
             <!-- begin sidebar -->
             <div id="sidebar1" class="sidebar threecol last clearfix" role="complementary">
 
+                {% if events_list %}
                 <!-- events -->
                 <div id="em_widget-2" class="widget widget_em_widget">
                   <ul>{% for evstart, evend, event in events_list[DEFAULT_LANG] %}
@@ -12,6 +13,7 @@
                       {% endfor %}
                   </ul>
                 </div>
+                {% endif %}
 
                 {% if MAILINGLIST is defined %}
                 <!-- newsletter subscription -->
