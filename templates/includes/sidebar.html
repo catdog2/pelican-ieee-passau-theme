@@ -43,18 +43,32 @@
 
                 <!-- social media links -->
                 <div class="clearfix">
-                    <div id="flatdesign_social-media-widget-button-0" class="widget widget_flatdesign_social-media-widget sixcol clearfix first">
-                        <a href="https://www.facebook.com/IEEEPassau" ><img src="{{ main_siteurl }}/theme/img/icons/facebook.png" /></a>
+                {% if SOCIAL %}
+                    {# we want a two column layout, a directly declared variables' value cannot be changed in a loop for
+                       outside-loop usage so we use this hacky workaraound #}
+                    {% set firstCol = {'foo': True} %}
+                    {% for image, url in SOCIAL %}
+                        {% if firstCol['foo'] %}
+                    <div class="widget widget_flatdesign_social-media-widget sixcol clearfix first">
+                        {% else %}
+                    <div class="widget widget_flatdesign_social-media-widget sixcol clearfix">
+                        {% endif %}
+                        <a href="{{ url }}" ><img src="{{ main_siteurl }}/{{ image }}" /></a>
                     </div>
-                    <div id="flatdesign_social-media-widget-button-1" class="widget widget_flatdesign_social-media-widget sixcol clearfix   ">
-                        <a href="https://plus.google.com/117774608000217615273/" rel="publisher"><img src="{{ main_siteurl }}/theme/img/icons/googleplus.png" /></a>
+                        {% do firstCol.update({'foo': not firstCol['foo']}) %}
+                    {% endfor %}
+
+                    {# add RSS to social widget if necessary #}
+                    {% if ADD_RSS %}
+                        {% if firstCol['foo'] %}
+                    <div class="widget widget_flatdesign_social-media-widget sixcol clearfix first">
+                        {% else %}
+                    <div class="widget widget_flatdesign_social-media-widget sixcol clearfix">
+                        {% endif %}
+                        <a href="{{ main_siteurl }}/{{ SITEURL | getOtherLanguage | getOtherLanguage }}/feeds/all-{{ SITEURL | getOtherLanguage | getOtherLanguage }}.atom.xml" ><img src="{{ main_siteurl }}/theme/img/icons/rss.png" /></a>
                     </div>
-                    <div id="flatdesign_social-media-widget-button-2" class="widget widget_flatdesign_social-media-widget sixcol clearfix first  ">
-                        <a href="https://twitter.com/IEEEPassau" ><img src="{{ main_siteurl }}/theme/img/icons/twitter.png" /></a>
-                    </div>
-                    <div id="flatdesign_social-media-widget-button-3" class="widget widget_flatdesign_social-media-widget sixcol clearfix   ">
-                        <a href="/de/feed/" ><img src="{{ main_siteurl }}/theme/img/icons/rss.png" /></a>
-                    </div>
+                    {% endif %}
+                {% endif %}
                 </div>
             </div>
             <!-- end sidebar -->
