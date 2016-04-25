@@ -9,58 +9,5 @@
 {% endblock headerPicture %}
 
 {% block content %}
-
-{% set counter = 0 %}
-{% for article in articles_page.object_list %}
-    {% if counter == SPONSOR_WIDGET_PLACE %}
-            <div id="text_icl-5" class="widget widget_text_icl inline-sponsors"><h4 class="widgettitle">{% trans %}trans_thank_sponsors{% endtrans %}</h4>
-                <div class="textwidget">
-                    {% for sponsor in SPONSORS %}
-                    <a href="{{ SITEURL }}/{{ SPONSORS_PAGE }}"><img src="{{ main_siteurl }}/{{ SPONSORS_PICTURE_FOLDER }}/{{ sponsor }}" style="height: 50px; margin-right:3%;margin-bottom:1%" /></a>
-                    {% endfor %}
-                </div>
-            </div>
-    {% endif %}
-    {% set counter = counter + 1 %}
-            <!-- begin overview pages -->
-            <article class="clearfix status-publish has-post-thumbnail hentry" role="article">
-                <header class="article-header">
-                    <time class="updated article-date" datetime="{{ article.date.isoformat() }}" pubdate="pubdate">
-                        <span class="article-date-day">{{ article.date.day }}</span>
-                        <span class="article-date-month">{{ article.date.month | toMonthNum }}</span>
-                        <span class="article-date-year">{{ article.date.year }}</span>
-                    </time>
-
-                    <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark">
-                        {% if article.illustration %}
-                        <img width="847" height="222" src="{{ main_siteurl }}/{{ article.illustration }}" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
-                        {% else %}
-                        <img width="847" height="222" src="{{ main_siteurl }}/{{ DEFAULT_ARTICLE_HEADER }}" class="attachment-flatdesign_post_preview size-flatdesign_post_preview wp-post-image" alt="banner" />
-                        {% endif %}
-                        <h1 class="h2 post-title">{{ article.title }}</h1>
-                    </a>
-                </header>
-                <section class="entry-content clearfix">
-                    {{ article.summary }}
-                </section>
-
-                {% include 'article_footer.html' %}
-
-            </article>
-            {% endfor %}
-
-            <div class="paginator">
-                {% if articles_page.has_previous() %}
-                    {% if articles_page.previous_page_number() == 1 %}
-                    <a href="{{ SITEURL }}/{{ page_name }}.html"><<</a>
-                    {% else %}
-                    <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.previous_page_number() }}.html"><<</a>
-                    {% endif %}
-                {% endif %}
-                {% trans %}trans_paginator{% endtrans %} {{ articles_page.number }} / {{ articles_paginator.num_pages }}
-                {% if articles_page.has_next() %}
-                <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html">>></a>
-                {% endif %}
-            </div>
-            <!-- end overview pages -->
+{% include 'includes/paginated_content.html' %}
 {% endblock content %}
