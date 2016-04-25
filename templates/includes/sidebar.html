@@ -13,6 +13,7 @@
                   </ul>
                 </div>
 
+                {% if MAILINGLIST is defined %}
                 <!-- newsletter subscription -->
                 <div id="mailman_subscribe-2" class="widget Mailman_Subscribe">
                     <h4 class="widgettitle">{% trans %}trans_newsletter_signup{% endtrans %}</h4>
@@ -36,6 +37,7 @@
                         <input type="submit" name="absenden" value="absenden" />
                     </form>
                 </div>
+                {% endif %}
 
                 <!-- social media links -->
                 <div class="clearfix">
