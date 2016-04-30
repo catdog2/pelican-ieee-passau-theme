@@ -69,6 +69,11 @@
                         </li>
                         {% endif %}
                         {% endfor %}
+                        {% if EXTERNAL_LINKS %}
+                            {% for link, name in EXTERNAL_LINKS %}
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{{ link }}">{{ name[ SITEURL | getCurrentLanguage] }}</a></li>
+                            {% endfor %}
+                        {% endif %}
                         <li id="menu-search" class="menu-item menu-item-type-search menu-search"><form class="navbar-search" action="{{ main_siteurl }}/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="{% trans %}trans_search{% endtrans %}" name="q" id="tipue_search_input"></form></li>
                     </ul>
                 </nav>
