@@ -44,7 +44,9 @@
                     {% block languageChoser %}
                     {% endblock languageChoser %}
                     <a href="{{ SITEURL }}" rel="nofollow">
-                        <span class="logo"></span>
+                        <span class="logo" {% if LOGO %}
+                              style="background-image: url({{ main_siteurl }}/{{ LOGO }});"
+                        {% endif %}></span>
                         {% block headerPicture %}
                         {% endblock headerPicture %}
                         <h1 class="title">{{ SITENAME }}</h1>

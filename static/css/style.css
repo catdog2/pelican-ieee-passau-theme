@@ -933,7 +933,6 @@ HEADER STYLES
   height: 100%;
   font-size: 3em;
   position: absolute;
-  background-image: url(../img/header-logo.svg);
   background-repeat: no-repeat;
   -webkit-filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
   filter: url("../img/shadow.svg#drop-shadow");
