@@ -31,11 +31,16 @@ JINJA_EXTENSIONS = ['jinja2.ext.do', 'webassets.ext.jinja2.AssetsExtions', 'jinj
 # so we just specify the css folder of this theme
 ASSET_SOURCE_PATHS = ['static/css']
 
+# this method is necessary as the default language is '' isntead of 'de'
+# so we need a converter for proper language handling
 def getOtherLanguage(path):
     if path.endswith("en"):
         return u'de'
     else:
         return u'en'
+
+def getCurrentLanguage(path):
+    return getOtherLanguage(getOtherLanguage))
 
 def toMonthNum(num):
     months = { 1 : 'Jan',
@@ -53,9 +58,17 @@ def toMonthNum(num):
              }
     return months[num]
 
+def removeLanguagePrefix(path):
+    if path.startswith("../en/") or path.startswith("../de/"):
+        return path[6:]
+    else:
+        return path
+
 JINJA_FILTERS = {
         'getOtherLanguage': getOtherLanguage,
+        'getCurrentLanguage': getCurrentLanguage,
         'toMonthNum': toMonthNum,
+        'removeLanguagePrefix': removeLanguagePrefix
         }
 ```
 
@@ -63,6 +76,11 @@ JINJA_FILTERS = {
 We provide several variables that can be used to customize the theme:
 
 ```Python
+# external links which should be added as menu items
+EXTERNAL_LINKS = [
+    ('//linktopage', {'de': 'titel', 'en': 'title'})
+]
+
 # setting the mail address of the newsletter
 MAILINGLIST = 'announce@ieee.students.uni-passau.de'
 
@@ -70,6 +88,7 @@ MAILINGLIST = 'announce@ieee.students.uni-passau.de'
 SPONSOR_WIDGET_PLACE = 2
 
 # header picture settings
+LOGO = 'header/ieee-logo.svg'
 HEADER_PICTURE = 'header/branch_header.jpg'
 DEFAULT_ARTICLE_HEADER = 'header/branch_header.jpg'
 DEFAULT_PAGE_HEADER = 'header/branch_header.jpg'
