@@ -21,6 +21,7 @@ In order to make these plugins work please ```pip install```:
 * ```pillow```
 * ```webassets```
 * ```cssmin```
+* ```jsmin```
 
 Additionally you have to enable the jinja2 do statements, assets, multilanguage and add some functions to your pelican config files in order to make the theme work properly:
 

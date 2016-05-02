@@ -102,7 +102,7 @@
     {% block script %}
 
     <!-- scripts (no more other content)-->
-    {% assets filters="uglifyjs", output="js/packed.js", "js/jquery.min.js", "js/jquery.magnific-popup.min.js" %}
+    {% assets filters="jsmin", output="js/packed.js", "js/jquery.min.js", "js/jquery.magnific-popup.min.js" %}
     <script src="{{ main_siteurl }}/{{ ASSET_URL | removeLanguagePrefix}}"></script>
     {% endassets %}
 
