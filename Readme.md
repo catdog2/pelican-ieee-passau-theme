@@ -15,13 +15,7 @@ Necessary plugins are:
 * ```photos``` (gallery plugin)
 * ```assets``` (minify css+js)
 
-In order to make these plugins work please ```pip install```:
-* ```beautifulsoup4```
-* ```icalendar```
-* ```pillow```
-* ```webassets```
-* ```cssmin```
-* ```jsmin```
+In order to make these plugins work please ```pip install -r requirements.txt```
 
 Additionally you have to enable the jinja2 do statements, assets, multilanguage and add some functions to your pelican config files in order to make the theme work properly:
 
