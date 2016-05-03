@@ -1,0 +1,6 @@
+beautifulsoup4
+icalendar
+pillow
+webassets
+cssmin
+jsmin
