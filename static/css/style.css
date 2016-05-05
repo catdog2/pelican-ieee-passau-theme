@@ -1509,6 +1509,10 @@ SIDEBARS & ASIDES
   /* deep nesting */
 }
 
+.widget ul li span {
+  font-family: "Source Sans Pro", "Helvetica Neue", "dashicons", Helvetica, Arial, sans-serif;
+}
+
 /* line 1039, ../scss/_base.scss */
 .sixcol {
   float: left;
